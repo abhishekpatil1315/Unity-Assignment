@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef739ee68b90e0e439f80d48d20147d9, type: 3}
+  m_Name: ObstacleData
+  m_EditorClassIdentifier: 
+  gridWidth: 10
+  gridHeight: 10
+  obstacleGrid: 00000000000000000000000000010101010101000000000000000000000000010101010101000000000000000000000000000000000101010101010000000000000000000000000101010101010000000000000000000000000000000000000000000000
