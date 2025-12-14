@@ -6,8 +6,10 @@ public class GridTile : MonoBehaviour
     public int GridY { get; private set; }
     public Vector3 WorldPosition { get; private set; }
     public bool HasObstacle { get; set; }
+    public bool IsOccupiedByEntity { get; private set; }
     
     private GameObject obstacleObject;
+    private GameObject occupyingEntity;
     
     public void Initialize(int x, int y, Vector3 worldPos)
     {
@@ -15,6 +17,8 @@ public class GridTile : MonoBehaviour
         GridY = y;
         WorldPosition = worldPos;
         HasObstacle = false;
+        IsOccupiedByEntity = false;
+        occupyingEntity = null;
     }
     
     public void SetObstacle(GameObject obstacle)
@@ -30,6 +34,17 @@ public class GridTile : MonoBehaviour
     
     public bool IsWalkable()
     {
-        return !HasObstacle;
+        return !HasObstacle && !IsOccupiedByEntity;
+    }
+    
+    public void SetOccupyingEntity(GameObject entity)
+    {
+        occupyingEntity = entity;
+        IsOccupiedByEntity = entity != null;
+    }
+    
+    public GameObject GetOccupyingEntity()
+    {
+        return occupyingEntity;
     }
 }

@@ -104,6 +104,13 @@ public class EnemyAI : MonoBehaviour, IAI
             return;
         }
         
+        // Clear previous tile occupation
+        GridTile previousTile = gridManager.GetTile(currentGridX, currentGridY);
+        if (previousTile != null)
+        {
+            previousTile.SetOccupyingEntity(null);
+        }
+        
         currentGridX = gridX;
         currentGridY = gridY;
         
@@ -112,6 +119,7 @@ public class EnemyAI : MonoBehaviour, IAI
         {
             Vector3 targetPosition = tile.WorldPosition + Vector3.up * heightAboveGround;
             transform.position = targetPosition;
+            tile.SetOccupyingEntity(gameObject);
         }
     }
     
@@ -260,8 +268,15 @@ public class EnemyAI : MonoBehaviour, IAI
             }
             
             // Update current grid position
+            GridTile oldTile = gridManager.GetTile(currentGridX, currentGridY);
+            if (oldTile != null)
+            {
+                oldTile.SetOccupyingEntity(null);
+            }
+            
             currentGridX = targetTile.GridX;
             currentGridY = targetTile.GridY;
+            targetTile.SetOccupyingEntity(gameObject);
             
             pathIndex++;
         }
